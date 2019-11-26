@@ -20,6 +20,26 @@ function(
 
 // My Code
 {
+	//* Create the manhole 3D cylinder symbol
+	const cylinderSymbol = {
+		type: 'point-3d',
+		symbolLayers: [{
+			type: 'object',
+			width: 5, 
+			height: 15,
+			depth: 5,
+			resource: {primitive: 'cylinder'},
+			material: {color: 'red'}
+		}]
+	}
+
+	//* Create the manhole renderer
+	const mhRenderer = {
+		type: 'simple',
+		symbol: cylinderSymbol
+	};
+
+	//* Create the sewer line 3D pipe symbol
 	const pipeSymbol = {
 		type: "line-3d",
 		symbolLayers: [{
@@ -29,13 +49,12 @@ function(
 				color: 'blue'
 			},
 			cap: 'round',
-			width: 5, // the width in m
-			height: 5 // the height in m
+			width: 4, // the width in m
+			height: 4 // the height in m
 		}]
 	};
 
-
-
+	//* Create the sewer line renderer
 	const lineRenderer = {
 		type: 'simple',
 		symbol: pipeSymbol
@@ -82,7 +101,7 @@ function(
 		renderer: lineRenderer,
 		elevationInfo: {
 			mode: 'relative-to-ground',
-			offset: 10
+			offset: 7
 		},
 		title: 'Sewer Lines',
 		outFields: ['*']
@@ -90,9 +109,10 @@ function(
 
 	const nodesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Nodes/FeatureServer',
+		renderer: mhRenderer,
 		elevationInfo: {
 			mode: 'relative-to-ground',
-			offset: 10
+			offset: 0
 		},
 		title: 'Manholes',
 		outFields: ['*']
