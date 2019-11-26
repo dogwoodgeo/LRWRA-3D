@@ -28,7 +28,7 @@ function(
 		symbolLayers: [{
 			type: 'object',
 			width: 5, 
-			height: 15,
+			height: 20,
 			depth: 5,
 			resource: {primitive: 'cylinder'},
 			material: {color: 'red'}
@@ -207,6 +207,12 @@ function(
 		ground: 'world-elevation'
 	});
 
+	//* Ground opacity and navigate underground
+	map.ground.opacity = 0.8;
+	map.ground.navigationConstraint = {
+		type: 'none'
+	};
+
 	//* SceneView 
 	view = new SceneView
 	({
@@ -237,7 +243,7 @@ function(
 		popupTemplate: slPopup,
 		elevationInfo: {
 			mode: 'relative-to-ground',
-			offset: 7
+			offset: -15
 		},
 		title: 'Sewer Lines',
 		outFields: ['*']
@@ -251,7 +257,7 @@ function(
 		labelingInfo: [mhLabelClass],
 		elevationInfo: {
 			mode: 'relative-to-ground',
-			offset: 0
+			offset: -19
 		},
 		title: 'Manholes',
 		outFields: ['*']
