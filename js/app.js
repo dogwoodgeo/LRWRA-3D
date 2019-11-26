@@ -18,7 +18,7 @@ function(
 	FeatureLayer
 )
 
-{
+{	
 	//* Create the manhole 3D cylinder symbol
 	const cylinderSymbol = {
 		type: 'point-3d',
@@ -59,6 +59,40 @@ function(
 		symbol: pipeSymbol
 	};
 
+	//* Manhole labels
+	const mhLabelClass = {
+		labelExpressionInfo: {	
+			expression: '$feature.MH_NO',
+		},	
+		symbol: {
+			type: "label-3d",  // autocasts as new TextSymbol3DLayer()
+			symbolLayers: [{
+				type: 'text',
+				material: { color: 'black'},
+				halo: {
+					color: 'white',
+					size: 1
+				},
+				size: 10,  // Defined in points
+			}],
+			verticalOffset: {
+				screenLength: 50,
+				maxWorldLength: 50,
+				minWorldLength: 1
+			},
+			callout: {
+				type: "line", // autocasts as new LineCallout3D()
+				size: 0.5,
+				color: 'black',
+				border: {
+					color: 'white'
+				}
+			},
+			minScale: 500,
+			labelPlacement: 'center-center',
+			}
+	};
+
 	//* Using the LRWRA default streets vector tile basemap
 	const stVTBasemap = new Basemap({
 		portalItem: {
@@ -90,7 +124,7 @@ function(
 			position: {
 				x: -92.26996807060175,
 				y: 34.731418195441755,
-				z: 1000, //* Altitude in meters
+				z: 500, //* Altitude in meters
 			},
 			tilt: 50 //* Perspective in degrees
 		}, 
@@ -113,6 +147,7 @@ function(
 	const nodesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Nodes/FeatureServer',
 		renderer: mhRenderer,
+		labelingInfo: [mhLabelClass],
 		elevationInfo: {
 			mode: 'relative-to-ground',
 			offset: 0
