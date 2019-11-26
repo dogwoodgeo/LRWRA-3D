@@ -8,17 +8,20 @@ require([
 	'esri/Map',
 	'esri/views/SceneView',
 	'esri/Basemap',
-	'esri/layers/FeatureLayer'
+	'esri/layers/FeatureLayer',
+	'esri/widgets/Search'
 ],
 
 function(
 	Map,
 	SceneView,
 	Basemap,
-	FeatureLayer
+	FeatureLayer,
+	Search
 )
 
 {	
+
 	//* Create the manhole 3D cylinder symbol
 	const cylinderSymbol = {
 		type: 'point-3d',
@@ -252,6 +255,31 @@ function(
 		},
 		title: 'Manholes',
 		outFields: ['*']
+	});
+
+	//* Search widget
+	const search = new Search({
+		view: view,
+		allPlaceholder: 'Manhole',
+		sources: [
+			{
+				layer: nodesLayer,
+				searchFields: ['MH_NO'],
+				displayField: 'MH_NO',
+				exactMatch: false,
+				outFields: ['*'],
+				name: 'Manhole Number',
+				placeholder: 'Example: -3F004',
+				maxResults: 6,
+				maxSuggestions: 6,
+				suggestionsEnabled: true,
+				zoomScale: 300
+			}
+		]
+	});
+
+	view.ui.add(search, {
+		position: "top-right"
 	});
 
 	//* Add layers
