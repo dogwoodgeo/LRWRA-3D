@@ -101,6 +101,102 @@ function(
 		}
 	});
 	
+	//* Sewer line popup template
+	const slPopup = {
+		title: '{UPS_MH} to {DWN_MH}',
+		content: [
+			{
+				type: 'fields',
+				fieldInfos: [
+					{
+						fieldName: 'UNITTYPE',
+						label: 'Unit Type'
+					},
+					{
+						fieldName: 'PIPETYPE',
+						label: 'Pipe Type'
+					},
+					{
+						fieldName: 'PIPELEN',
+						label: 'Length'
+					},
+					{
+						fieldName: 'PIPEDIAM',
+						label: 'Diameter'
+					},
+					{
+						fieldName: 'UPDPTH',
+						label: 'Upstream Depth'
+					},
+					{
+						fieldName: 'DOWNDPTH',
+						label: 'Downstream Depth'
+					},
+					{
+						fieldName: 'INSTDATE',
+						label: 'Install Date',
+						format: {
+							dateFormat: 'day-short-month-year'
+						}
+					},
+					{
+						fieldName: 'COMPKEY',
+						label: 'CompKey'
+					},
+				]
+			}
+		]
+	}
+
+	//* Manhole popup template
+	const mhPopup = {
+		title: '{MH_NO}',
+		content: [
+			{
+				type: 'fields',
+				fieldInfos: [
+					{
+						fieldName: 'SERVSTAT',
+						label: 'Service Status'
+					},
+					{
+						fieldName: 'UNITTYPE',
+						label: 'Unit Type'
+					},
+					{
+						fieldName: 'INSTDATE',
+						label: 'Install Date',
+						format: {
+							dateFormat: 'day-short-month-year'
+						}
+					},
+					{
+						fieldName: 'DROPMH',
+						label: 'Drop(Y/N)'
+					},
+					{
+						fieldName: 'OWN',
+						label: 'Ownership'
+					},
+					{
+						fieldName: 'COMPKEY',
+						label: 'CompKey'
+					},
+					{
+						fieldName: 'MHDPTH',
+						label: 'Depth'
+					},
+					{
+						fieldName: 'SAFETYMSG',
+						label: 'Safety Message'
+					}
+				]
+			}
+		]
+
+	};
+
+
 	//* Map 
 	const map = new Map
 	({ 
@@ -135,6 +231,7 @@ function(
 	const linesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Lines/FeatureServer',
 		renderer: lineRenderer,
+		popupTemplate: slPopup,
 		elevationInfo: {
 			mode: 'relative-to-ground',
 			offset: 7
@@ -147,6 +244,7 @@ function(
 	const nodesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Nodes/FeatureServer',
 		renderer: mhRenderer,
+		popupTemplate: mhPopup,
 		labelingInfo: [mhLabelClass],
 		elevationInfo: {
 			mode: 'relative-to-ground',
