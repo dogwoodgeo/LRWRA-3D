@@ -18,7 +18,6 @@ function(
 	FeatureLayer
 )
 
-// My Code
 {
 	//* Create the manhole 3D cylinder symbol
 	const cylinderSymbol = {
@@ -68,12 +67,14 @@ function(
 		}
 	});
 	
+	//* Map 
 	const map = new Map
 	({ 
 		basemap: stVTBasemap,
 		ground: 'world-elevation'
 	});
 
+	//* SceneView 
 	view = new SceneView
 	({
 		container: 'mainDiv',
@@ -96,6 +97,7 @@ function(
 		heading: 200,//* Degrees
 	});
 
+	//* Lines Layer
 	const linesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Lines/FeatureServer',
 		renderer: lineRenderer,
@@ -107,6 +109,7 @@ function(
 		outFields: ['*']
 	});
 
+	//* Nodes Layer
 	const nodesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Nodes/FeatureServer',
 		renderer: mhRenderer,
@@ -118,6 +121,6 @@ function(
 		outFields: ['*']
 	});
 
-
+	//* Add layers
 	map.addMany([linesLayer, nodesLayer]);
 });
