@@ -20,15 +20,25 @@ function(
 
 // My Code
 {
-	const lineSym = {
-		type: "simple-line", 
-		color: "blue",
-		width: '7px'
+	const pipeSymbol = {
+		type: "line-3d",
+		symbolLayers: [{
+			type: "path",
+			profile: "circle",
+			material: {
+				color: 'blue'
+			},
+			cap: 'round',
+			width: 5, // the width in m
+			height: 5 // the height in m
+		}]
 	};
+
+
 
 	const lineRenderer = {
 		type: 'simple',
-		symbol: lineSym
+		symbol: pipeSymbol
 	};
 
 	//* Using the LRWRA default streets vector tile basemap
