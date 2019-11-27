@@ -9,14 +9,16 @@ This is a 3D representation of the Little Rock Water Reclamation Authority's sew
 - Popups are enabled for all features.
 - Subsurface depths/elevations of features are *NOT* representative of real world attributes.  Absolute values are used.
 
+[View live version.](https://gis.lrwu.com/3d)
+
 
 
 Future enhancements:
 
-- Make feature depths be rebresentative of real world attributes.
+- Make feature depths rebresentative of real world attributes.
 - Include other infrastructure (pump stations, treatment plants, buildings (?), etc.)
 - Render sewer lines based on size.
-- Add an expandable information panel
+- Add an expandable information panel.
 
 
 
