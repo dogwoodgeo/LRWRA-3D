@@ -22,6 +22,17 @@ function(
 
 {	
 
+	//* Set extent
+	extent = {
+		xmax: -10239233,
+		xmin: -10326560,
+		ymax: 4154450,
+		ymin: 4101949, 
+		spatialReference: {
+			wkid: 3857
+		}
+	};
+
 	//* Create the manhole 3D cylinder symbol
 	const cylinderSymbol = {
 		type: 'point-3d',
@@ -218,6 +229,9 @@ function(
 	({
 		container: 'mainDiv',
 		map: map,
+		viewingMode: 'local',
+		clippingArea: extent,
+		extent: extent,
 		qualityProfile: 'high',
 		environment: {
 			lighting: {
