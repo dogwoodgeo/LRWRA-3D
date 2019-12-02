@@ -9,7 +9,8 @@ require([
 	'esri/views/SceneView',
 	'esri/Basemap',
 	'esri/layers/FeatureLayer',
-	'esri/widgets/Search'
+	'esri/widgets/Search',
+	'esri/widgets/Expand'
 ],
 
 function(
@@ -17,7 +18,8 @@ function(
 	SceneView,
 	Basemap,
 	FeatureLayer,
-	Search
+	Search,
+	Expand
 )
 
 {	
@@ -250,6 +252,17 @@ function(
 		heading: 200,//* Degrees
 	});
 
+	const expandContent = '<h3 style="color: #2D9773">LRWRA 3D</h3>' + 
+	'<span style="color: #70B5B4">' + 
+	'This is a 3D representation of the Little Rock Water Reclamation Authority\'s sewer system.<br><br>' + 
+	'<span style="color: #2D9773"><b>Subsurface Navigation</b></span><br>' + 
+	'<span style="color: #70B5B4">Right-click, hold, and drag the mouse to rotate or change view angle and navigate underground.</span><br><br>' + 
+	'<span style="color: #2D9773"><b>Important</b></span><br>' +
+	'<span style="color: #70B5B4">Subsurface depths/elevations of features are NOT representative of real world attributes. Absolute values relative the ground elevation are used for manhole and sewer line depths. This will be addressed in future updates.</span><br><br>' + 
+	'<span style="color: #2D9773 ; font-weight: 900">Contact</span><br>' +
+	'<span style="color: #70B5B4">Bradley Jones</span><br>' +
+	'<a href="mailto:Bradley.Jones@lrwra.com">Bradley.Jones@lrwra.com</a><br>' 
+
 	//* Lines Layer
 	const linesLayer = new FeatureLayer({
 		url: 'https://gis.lrwu.com/server/rest/services/Layers/Sewer_Lines/FeatureServer',
@@ -301,6 +314,14 @@ function(
 	view.ui.add(search, {
 		position: "top-right"
 	});
+
+	infoExpand = new Expand({
+		expandIconClass: 'esri-icon-description',
+		view: view,
+		content: expandContent,
+		expanded: true,
+	})
+	view.ui.add(infoExpand, 'top-right');
 
 	//* Add layers
 	map.addMany([linesLayer, nodesLayer]);

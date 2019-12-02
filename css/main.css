@@ -6,3 +6,13 @@ body,
   height: 100%;
   width: 100;
 }
+
+.esri-expand__content--expanded {
+  opacity: 1;
+  background-color:white; 
+  padding: 20px;
+  overflow: auto;
+  word-wrap: normal;
+  width: 300px;
+  height: auto;  
+}
