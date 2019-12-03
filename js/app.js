@@ -253,14 +253,14 @@ function(
 	});
 
 	const expandContent = '<h3 style="color: #2D9773">LRWRA 3D</h3>' + 
-	'<span style="color: #70B5B4">' + 
+	'<span style="color: #2D9773">' + 
 	'This is a 3D representation of the Little Rock Water Reclamation Authority\'s sewer system.<br><br>' + 
 	'<span style="color: #2D9773"><b>Subsurface Navigation</b></span><br>' + 
-	'<span style="color: #70B5B4">Right-click, hold, and drag the mouse to rotate or change view angle and navigate underground.</span><br><br>' + 
+	'<span style="color: #2D9773">Right-click, hold, and drag the mouse to rotate or change view angle and navigate underground.</span><br><br>' + 
 	'<span style="color: #2D9773"><b>Important</b></span><br>' +
-	'<span style="color: #70B5B4">Subsurface depths/elevations of features are NOT representative of real world attributes. Absolute values relative the ground elevation are used for manhole and sewer line depths. This will be addressed in future updates.</span><br><br>' + 
+	'<span style="color: #2D9773">Subsurface depths/elevations of features are NOT representative of real world attributes. Absolute values relative the ground elevation are used for manhole and sewer line depths. This will be addressed in future updates.</span><br><br>' + 
 	'<span style="color: #2D9773 ; font-weight: 900">Contact</span><br>' +
-	'<span style="color: #70B5B4">Bradley Jones</span><br>' +
+	'<span style="color: #2D9773">Bradley Jones</span><br>' +
 	'<a href="mailto:Bradley.Jones@lrwra.com">Bradley.Jones@lrwra.com</a><br>' 
 
 	//* Lines Layer
