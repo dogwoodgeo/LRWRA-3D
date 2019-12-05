@@ -276,7 +276,8 @@ function(
 		outFields: ['*'],
 		featureReduction: {
 			type: 'selection'
-		}
+		},
+		minScale: 3000
 	});
 
 	//* Nodes Layer
@@ -293,7 +294,8 @@ function(
 		outFields: ['*'],
 		featureReduction: {
 			type: 'selection'
-		}
+		},
+		minScale: 3000
 	});
 
 	//* Search widget
