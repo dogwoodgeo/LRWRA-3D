@@ -273,7 +273,10 @@ function(
 			offset: -15
 		},
 		title: 'Sewer Lines',
-		outFields: ['*']
+		outFields: ['*'],
+		featureReduction: {
+			type: 'selection'
+		}
 	});
 
 	//* Nodes Layer
@@ -287,7 +290,10 @@ function(
 			offset: -19
 		},
 		title: 'Manholes',
-		outFields: ['*']
+		outFields: ['*'],
+		featureReduction: {
+			type: 'selection'
+		}
 	});
 
 	//* Search widget
